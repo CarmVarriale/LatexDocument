@@ -3,45 +3,22 @@
 
 \usepackage{standalone, pdfpages}
 
-%% Layout
+%% Page layout, language and font
 %% ---------------------------------------------------
+
+\usepackage[utf8]{inputenc}
+\usepackage[english,italian]{babel}
+\usepackage[margin=1cm, vmargin=2cm]{geometry}
+\setlength\columnsep{18pt}
+\setlength{\parindent}{0pt} % Remove paragraph indentation
+
+\usepackage{newtxtext}
 
 \usepackage{
 	enumitem,
 	booktabs,
-	multicol,
-	multirow,
-	makecell,
-	colortbl,
-	csquotes}
-
-\setlength{\parindent}{0pt} % Remove paragraph indentation
-
-\newcolumntype{L}{>{$}l<{$}} % left-aligned, automatic math mode
-\newcolumntype{C}{>{$}c<{$}} % center-aligned, automatic math mode
-\newcolumntype{R}{>{$}r<{$}} % center-aligned, automatic math mode
-
-% Trick Supertabular into Multicols in new command
-% e.g.
-%	\begin{multicols*}{2}
-%		\TrickSupertabularIntoMulticols
-%		\begin{supertabular}{|l|l|}
-%			\tablebody
-%		\end{supertabular}
-%	\end{multicols*}
-\makeatletter
-\let\mcnewpage=\newpage
-\newcommand{\TrickSupertabularIntoMulticols}{%
-	\renewcommand\newpage{%
-		\if@firstcolumn
-			\hrule width\linewidth height0pt
-			\columnbreak
-		\else
-			\mcnewpage
-		\fi
-	}%
-}
-\makeatother
+	csquotes,
+	ragged2e}
 
 %% Colors and Lexical
 %% ---------------------------------------------------
@@ -99,21 +76,22 @@
 	bm,
 	xfrac,
 	calc,
-	smartdiagram}
+	smartdiagram,
+	newtxmath}
 
 \usepackage[TX]{ar}
 
 \newcommand{\twovec}[2]{%
 	\left(\!\!
-		\begin{array}{c} 
-			#1 \\ #2 
-		\end{array}
+	\begin{array}{c}
+		#1 \\ #2
+	\end{array}
 	\!\!\right)}
 \newcommand{\threevec}[3]{%
 	\left(\!\!
-		\begin{array}{c} 
-			#1 \\ #2 \\ #3 
-		\end{array}
+	\begin{array}{c}
+		#1 \\ #2 \\ #3
+	\end{array}
 	\!\!\right)}
 
 %% Operators
@@ -193,8 +171,14 @@
 
 \DeclareSIUnit[]{\passenger}{\mathrm{pax}}
 
-%% Sub-figures/sub-tables
+%% Figures and tables
 %% ---------------------------------------------------------------
+
+\usepackage{
+	multicol,
+	multirow,
+	makecell,
+	colortbl}
 
 \usepackage{caption, subcaption}
 \newlength{\myfigh}
@@ -229,6 +213,32 @@
 	singlelinecheck=true,
 	format=hang,
 }
+
+\newcolumntype{L}{>{$}l<{$}} % left-aligned, automatic math mode
+	\newcolumntype{C}{>{$}c<{$}} % center-aligned, automatic math mode
+\newcolumntype{R}{>{$}r<{$}} % center-aligned, automatic math mode
+
+% Trick Supertabular into Multicols in new command
+% e.g.
+%	\begin{multicols*}{2}
+%		\TrickSupertabularIntoMulticols
+%		\begin{supertabular}{|l|l|}
+%			\tablebody
+%		\end{supertabular}
+%	\end{multicols*}
+\makeatletter
+\let\mcnewpage=\newpage
+\newcommand{\TrickSupertabularIntoMulticols}{%
+	\renewcommand\newpage{%
+		\if@firstcolumn
+			\hrule width\linewidth height0pt
+			\columnbreak
+		\else
+			\mcnewpage
+		\fi
+	}%
+}
+\makeatother
 
 %% Cross references
 %% ---------------------------------------------------------------
