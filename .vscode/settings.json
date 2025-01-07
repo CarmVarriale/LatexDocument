@@ -1,5 +1,5 @@
 {
-    "latex-workshop.formatting.latex": "latexindent",
+    "latex-workshop.formatting.latex": "tex-fmt",
     "latex-workshop.latex.autoBuild.run": "never",
     "latex-workshop.latex.outDir": "%DIR%/_aux",
     "latex-workshop.latex.recipes": [
@@ -116,8 +116,8 @@
             "name": "makeglossaries"
         }
     ],
-    "latex-workshop.message.error.show": true,
-    "latex-workshop.message.warning.show": true,
+    "latex-workshop.message.error.show": false,
+    "latex-workshop.message.warning.show": false,
     "latex-workshop.view.pdf.tab.editorGroup": "right",
     "latex-workshop.view.pdf.viewer": "tab"
 }
