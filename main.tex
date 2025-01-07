@@ -1,0 +1,49 @@
+\documentclass[12pt]{report}
+
+%% Preamble
+%% ---------------------------------------------------
+\include{_preamble/preamble} 
+\usepackage{lineno}
+
+\begin{document}
+
+%% Frontmatter
+%% ---------------------------------------------------
+\begin{frontmatter}
+    \title{Direct Lift Control: a review of its principles, merits, current
+        and future implementations}
+    \author[]{Carmine Varriale}
+\end{frontmatter}
+
+% \tableofcontents
+
+%% List of symbols
+%% ---------------------------------------------------
+\glssetwidest[0]{}
+\glssetwidest[1]{MX}
+\printglossary[type=symbols, title={List of symbols}, style=alttree-units]
+\glsdisablehyper
+
+
+%% List of acronyms
+%% ---------------------------------------------------
+\glssetwidest[0]{MIMO}
+\printglossary[type=acronym, title={List of acronyms}, style=alttree]
+
+
+
+%% Main text
+%% ---------------------------------------------------
+% \linenumbers
+% \frenchspacing
+
+\include{...}
+
+%% Appendices
+% \appendix
+
+%% Bibliography
+\printbibliography
+
+\end{document}
+\endinput

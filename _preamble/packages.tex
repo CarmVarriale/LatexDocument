@@ -1,0 +1,243 @@
+% File Management
+%% ---------------------------------------------------
+
+\usepackage{standalone, pdfpages}
+
+%% Layout
+%% ---------------------------------------------------
+
+\usepackage{
+	enumitem,
+	booktabs,
+	multicol,
+	multirow,
+	makecell,
+	colortbl,
+	csquotes}
+
+\setlength{\parindent}{0pt} % Remove paragraph indentation
+
+\newcolumntype{L}{>{$}l<{$}} % left-aligned, automatic math mode
+\newcolumntype{C}{>{$}c<{$}} % center-aligned, automatic math mode
+\newcolumntype{R}{>{$}r<{$}} % center-aligned, automatic math mode
+
+% Trick Supertabular into Multicols in new command
+% e.g.
+%	\begin{multicols*}{2}
+%		\TrickSupertabularIntoMulticols
+%		\begin{supertabular}{|l|l|}
+%			\tablebody
+%		\end{supertabular}
+%	\end{multicols*}
+\makeatletter
+\let\mcnewpage=\newpage
+\newcommand{\TrickSupertabularIntoMulticols}{%
+	\renewcommand\newpage{%
+		\if@firstcolumn
+			\hrule width\linewidth height0pt
+			\columnbreak
+		\else
+			\mcnewpage
+		\fi
+	}%
+}
+\makeatother
+
+%% Colors and Lexical
+%% ---------------------------------------------------
+
+\usepackage{graphicx, xcolor, xspace, rotating}
+
+%% MATLAB color scheme
+%% ---------------------------------------------------------------
+\definecolor{myblue}{rgb}{0.00000,0.44700,0.74100}%
+\definecolor{myred}{rgb}{0.85000,0.32500,0.09800}%
+\definecolor{myyellow}{rgb}{0.92900,0.69400,0.12500}%
+\definecolor{mypurple}{rgb}{0.49400,0.18400,0.55600}%
+\definecolor{mygreen}{rgb}{0.46600,0.67400,0.18800}%
+\definecolor{mylightblue}{rgb}{0.30100,0.74500,0.93300}%
+\definecolor{mydarkred}{rgb}{0.63500,0.07800,0.18400}%
+
+%% TU Delft color scheme
+%% ---------------------------------------------------------------
+\definecolor{tudelft-cyan}{cmyk}{1,0,0,0}
+\definecolor{tudelft-black}{cmyk}{0,0,0,1}
+\definecolor{tudelft-white}{cmyk}{0,0,0,0}
+\definecolor{tudelft-sea-green}{cmyk}{0.54,0,0.32,0}
+\definecolor{tudelft-green}{cmyk}{1,0.15,0.4,0}
+\definecolor{tudelft-dark-blue}{cmyk}{1,0.66,0,0.4}
+\definecolor{tudelft-purple}{cmyk}{0.98,1,0,0.35}
+\definecolor{tudelft-turquoise}{cmyk}{0.82,0,0.21,0.08}
+\definecolor{tudelft-sky-blue}{cmyk}{0.45,0,0.06,0.06}
+\definecolor{tudelft-lavendel}{cmyk}{0.45,0.2,0,0.07}
+\definecolor{tudelft-orange}{cmyk}{0.02,0.56,0.84,0}
+\definecolor{tudelft-warm-purple}{cmyk}{0.58,1,0,0.02}
+\definecolor{tudelft-fuchsia}{cmyk}{0.19,1,0,0.19}
+\definecolor{tudelft-bright-green}{cmyk}{0.36,0,1,0}
+\definecolor{tudelft-yellow}{cmyk}{0.02,0,0.54,0}
+
+%% Abbreviations
+%% ---------------------------------------------------------------
+\newcommand*{\eg}{e.g.\@\xspace}
+\newcommand*{\ie}{i.e.\@\xspace}
+\newcommand*{\etc}{etc.\@\xspace}
+\newcommand*{\wrt}{w.r.t.\@\xspace}
+\newcommand{\quotes}[1]{``#1''}
+
+%% Bold symbols
+%% ---------------------------------------------------------------
+\newcommand{\hmmax}{0} % Reduces heavy symbols
+\newcommand{\bmmax}{0} % Reduces bold symbols
+
+%% Mathematics and math symbols
+%% ---------------------------------------------------------------
+
+\usepackage{
+	amsmath,
+	amssymb,
+	mathtools,
+	bm,
+	xfrac,
+	calc,
+	smartdiagram}
+
+\usepackage[TX]{ar}
+
+\newcommand{\twovec}[2]{%
+	\left(\!\!
+		\begin{array}{c} 
+			#1 \\ #2 
+		\end{array}
+	\!\!\right)}
+\newcommand{\threevec}[3]{%
+	\left(\!\!
+		\begin{array}{c} 
+			#1 \\ #2 \\ #3 
+		\end{array}
+	\!\!\right)}
+
+%% Operators
+%% ---------------------------------------------------------------
+\newcommand{\pdiff}[2]{\frac{\partial #1}{\partial #2}}
+\newcommand{\dd}{\ensuremath{\,\mathrm{d}}}
+\newcommand{\ddt}{\ensuremath{\,\dd t}}
+\newcommand{\ddx}{\ensuremath{\,\dd x}}
+\newcommand{\odiff}[2]{\frac{\dd #1}{\dd #2}}
+\newcommand{\eps}{\varepsilon}
+\newcommand{\sign}{\mathrm{sign}}
+\newcommand{\erf}{\mathrm{erf}}
+\newcommand{\overbar}[1]{\mkern 1.5mu\overline{\mkern-1.5mu#1}\mkern 1.5mu}
+\newcommand{\subjto}{\ensuremath{\text{subj. to}}}
+
+%%  Delimiters
+%% ---------------------------------------------------------------
+\DeclarePairedDelimiter{\abs}{\lvert}{\rvert}
+\DeclarePairedDelimiter{\norm}{\lVert}{\rVert}
+\DeclarePairedDelimiter{\rowvec}{\lbrack}{\rbrack}
+\DeclarePairedDelimiter{\rowset}{\lbrace}{\rbrace}
+
+% Swap the definition of \delimiter*, so that \delimiter{}
+% resizes the size of the brackets, and the starred version does not.
+\makeatletter
+%
+\let\oldabs\abs
+\def\abs{\@ifstar{\oldabs}{\oldabs*}}
+%
+\let\oldnorm\norm
+\def\norm{\@ifstar{\oldnorm}{\oldnorm*}}
+%
+\let\oldrowvec\rowvec
+\def\rowvec{\@ifstar{\oldrowvec}{\oldrowvec*}}
+%
+\let\oldrowset\rowset
+\def\rowset{\@ifstar{\oldrowset}{\oldrowset*}}
+%
+\makeatother
+
+%% Units
+%% ---------------------------------------------------------------
+\usepackage{siunitx}
+\sisetup{
+	per-mode=symbol,
+	inter-unit-product = \ensuremath{\! \cdot{} \!},
+}
+
+\DeclareSIUnit[]{\degree}{deg}
+\DeclareSIUnit[]{\inch}{in}
+\DeclareSIUnit[]{\foot}{ft}
+\DeclareSIUnit[]{\mile}{mi}
+\DeclareSIUnit[]{\nmile}{nmi}
+\DeclareSIUnit[]{\rpm}{rpm}
+\DeclareSIUnit[]{\mph}{mph}
+\DeclareSIUnit[]{\knot}{kts}
+\DeclareSIUnit[]{\pound}{lb}
+\DeclareSIUnit[]{\slug}{slug}
+\DeclareSIUnit[]{\ton}{ton}
+\DeclareSIUnit[]{\pint}{pt}
+\DeclareSIUnit[]{\quart}{qt}
+\DeclareSIUnit[]{\igal}{gal}
+\DeclareSIUnit[]{\usgal}{US \ gal}
+\DeclareSIUnit[]{\hour}{hr}
+\DeclareSIUnit[]{\minute}{min}
+\DeclareSIUnit[]{\kiloforce}{kgf}
+\DeclareSIUnit[]{\poundforce}{lbf}
+\DeclareSIUnit[]{\poundfoot}{\poundforce\foot}
+\DeclareSIUnit[]{\psi}{psi}
+\DeclareSIUnit[]{\atm}{atm}
+\DeclareSIUnit[]{\inchMercury}{\si{\inch} \ Hg}
+\DeclareSIUnit[]{\britishthermalunit}{Btu}
+\DeclareSIUnit[]{\ihorsepower}{hp}
+\DeclareSIUnit[]{\mhorsepower}{cv}
+\DeclareSIUnit[]{\fahrenheit}{\text{\textdegree}\mathrm{F}}
+\DeclareSIUnit[]{\rankine}{\text{\textdegree}\mathrm{R}}
+
+\DeclareSIUnit[]{\passenger}{\mathrm{pax}}
+
+%% Sub-figures/sub-tables
+%% ---------------------------------------------------------------
+
+\usepackage{caption, subcaption}
+\newlength{\myfigh}
+\newlength{\myfigw}
+\setlength{\myfigh}{1\linewidth}
+\setlength{\myfigw}{1\linewidth}
+
+\captionsetup[table]{
+	position=top,
+	font=footnotesize,
+	labelfont={bf,rm,footnotesize},
+	labelsep=space,
+	singlelinecheck=true,
+	format=hang
+}
+
+\captionsetup[figure]{
+	position=bottom,
+	font=footnotesize,
+	labelfont={bf,rm,footnotesize},
+	labelsep=space,
+	singlelinecheck=true,
+	format=hang
+}
+
+\captionsetup[subfigure]{
+	position=bottom,
+	font=footnotesize,
+	labelformat=brace,
+	labelfont={bf,rm,footnotesize},
+	labelsep=space,
+	singlelinecheck=true,
+	format=hang,
+}
+
+%% Cross references
+%% ---------------------------------------------------------------
+
+\usepackage[perpage]{footmisc}
+\usepackage[hidelinks]{hyperref}
+
+\usepackage[noabbrev, nameinlink]{cleveref}
+\creflabelformat{equation}{#2#1#3}
+% \crefname{equation}{Eq.}{Eqs.}
+% \crefname{figure}{Fig.}{Figs.}
+% \crefname{tabular}{Tab.}{Tabs.}

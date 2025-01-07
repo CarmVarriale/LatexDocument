@@ -1,0 +1,117 @@
+\usepackage{pgfplots,tikz-3dplot}
+\usetikzlibrary{
+	3d,
+	arrows,
+	arrows.meta,
+	calc,
+	decorations,
+	decorations.markings,
+	external,
+	intersections,
+	math,
+	matrix,
+	patterns,
+	plotmarks,
+	spy,
+	through,
+}
+\usepgfplotslibrary{
+	colorbrewer,
+	patchplots,
+	fillbetween
+}
+
+
+%% Externalization
+\tikzexternalize[prefix=_tikz/]  % Externalize every chart
+% \tikzset{external/only named=true}
+% \newcommand{\inputtikzext}[2]{\tikzsetnextfilename{#1}\input{#2}}
+
+%% Custom styles
+\pgfplotsset{
+	compat=newest,
+	axis line style={>=latex},
+	tick label style={font=\scriptsize},
+	label style={font=\footnotesize},
+	x tick scale label style={
+			at={(rel axis cs:1,0,0)},
+			anchor=south west,
+			inner sep=1pt},
+	y tick scale label style={
+			at={(rel axis cs:0,1,0)},
+			anchor=south west,
+			inner sep=1pt},
+	z tick scale label style={
+			at={(rel axis cs:0,0,1)},
+			anchor=south west,
+			inner sep=1pt},
+	legend style = {
+			cells={anchor=west},
+			font=\footnotesize,
+			draw=none,
+			fill=none,
+		},
+}
+
+\pgfkeys{/pgf/number format/1000 sep={}}
+
+% Block schemes
+\tikzset{
+	>=latex,
+	every node/.style={font=\footnotesize},
+	block/.style = {
+			rectangle,
+			rounded corners,
+			draw=black,
+			fill=white,
+			node distance=3.5cm,
+			minimum width=2cm,
+			minimum height=1cm,
+			text centered,
+			font=\footnotesize,
+			inner sep=5pt,
+		},
+	decision/.style = {
+			diamond,
+			minimum width=2cm,
+			minimum height=1cm,
+			text centered,
+			draw=black,
+			fill=white,
+			font=\footnotesize,
+		},
+	inputoutput/.style = {
+			trapezium,
+			trapezium left angle=70,
+			trapezium right angle=110,
+			minimum width=2cm,
+			minimum height=1cm,
+			text centered,
+			draw=black,
+			fill=white,
+			font=\footnotesize,
+		},
+	dot/.style ={
+			circle,
+			draw=black,
+			fill=black,
+			inner sep=1pt,
+		},
+}
+
+
+%% Center of mass symbol of given radius
+% Example: \node at (0,0,0) {\centerofmass{0.4em}};
+\newcommand*{\centerofmass}[1]{%
+	\tikz[radius=#1] {%
+		\fill (0,0) -- ++(#1,0) arc [start angle=0,end angle=90] -- 
+		++(0,-2*#1) arc [start angle=270, end angle=180];%
+		\draw (0,0) circle;%
+	}%
+}
+
+% Draw arc from center
+% Syntax: [draw options] (center) (initial angle:final angle:radius)
+% Example: \centerarc[red,thick](0,0)(5:85:1)(nodeoptions)(nodetext);
+\def\centerarc[#1](#2)(#3:#4:#5)(#6)(#7)%
+{ \draw[#1] ($(#2)+({#5*cos(#3)},{#5*sin(#3)})$) arc (#3:#4:#5) node[#6] {#7};}

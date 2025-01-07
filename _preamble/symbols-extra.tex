@@ -1,0 +1,196 @@
+% These are composite symbols and useful macros.
+% These symbols do not show up in the glossary
+% For symbols joining multiple \gls entries, use manual subscripts and superscripts
+% For symbols using numerical or explicit subscripts, use \gls{label}[_123]
+
+
+
+
+% A
+\glsxtrnewsymbol[description={average},
+	type={symbols-extra},
+	unit={},
+	parent=subsuper]
+{avg}
+{\ensuremath{\mathrm{avg}}}
+
+
+% B
+
+
+
+% C
+\glsxtrnewsymbol[description={Constraint},
+	type={symbols-extra},
+	unit={},
+	parent=roman]
+{constraint}
+{\ensuremath{\mathcal{C}}}
+
+
+% D
+
+
+
+% E
+
+
+
+% F
+
+
+% G
+
+
+
+% H
+
+
+
+% I
+
+
+% J
+
+
+
+% K
+
+
+
+% L
+\glsxtrnewsymbol[description={limit condition},
+	type={symbols-extra},
+	unit={},
+	parent=subsuper]
+{lim}
+{\ensuremath{\mathrm{lim}}}
+
+\glsxtrnewsymbol[description={Lagrange running-cost term},
+	type={symbols-extra},
+	unit={},
+	parent=roman]
+{Lagrange}
+{\ensuremath{\mathrm{La}}}
+
+
+% M
+\glsxtrnewsymbol[description={asymptotic Mach number},
+	type={symbols-extra},
+	unit={}]
+{Minf}
+{\gls{M}[_{\infty}]}
+
+\glsxtrnewsymbol[description={Mayer end-cost term},
+	type={symbols-extra},
+	unit={},
+	parent=roman]
+{Mayer}
+{\ensuremath{\mathrm{Ma}}}
+
+
+
+% N
+
+
+
+% O
+
+
+
+% P
+
+
+
+% Q
+
+
+
+% R
+\glsxtrnewsymbol[description={rotation},
+	type={symbols-extra},
+	unit={},
+	parent=subsuper]
+{rot}
+{\ensuremath{\mathrm{rot}}}
+
+\glsxtrnewsymbol[description={reference condition},
+	type={symbols-extra},
+	unit={},
+	parent=subsuper]
+{ref}
+{\ensuremath{\mathrm{ref}}}
+
+
+% S
+
+
+
+% T
+\glsxtrnewsymbol[description={maximum available thrust},
+	type={symbols-extra},
+	unit={\si{\newton}}]
+{Tmax}
+{\gls{T}[_{\max}]}
+
+\glsxtrnewsymbol[description={time constant},
+	unit={\si{\second}},
+	parent=greek]
+{tau}
+{\ensuremath{\tau}}
+
+
+% U
+
+
+% V
+
+
+
+% W
+
+
+
+% X
+\glsxtrnewsymbol[description={longitudinal position},
+	unit={\si{\meter}},
+	type={symbols-extra},
+	bar={\ensuremath{\overbar{x}}},
+	bold={\ensuremath{\bm{x}}},
+	dot={\ensuremath{\dot{x}}},
+	parent=roman]
+{x}
+{\ensuremath{x}}
+
+\glsxtrnewsymbol[description={longitudinal position of the \gls{ICR}},
+	type={symbols-extra},
+	unit={\si{\meter}},
+	bar={\gbarsubrm{x}{ICR}},
+	dot={\gdotsubrm{x}{ICR}},
+	parent=roman]
+{xicr}
+{\gsubrm{x}{ICR}}
+
+
+% Y
+
+
+
+% Z
+\glsxtrnewsymbol[description={vertical position},
+	unit={\si{\meter}},
+	type={symbols-extra},
+	bar={\overbar{z}},
+	dot={\ensuremath{\dot{z}}},
+	parent=roman]
+{z}
+{\ensuremath{z}}
+
+\glsxtrnewsymbol[description={vertical position of the \gls{ICR}},
+	type={symbols-extra},
+	unit={\si{\meter}},
+	bar={\gbarsubrm{z}{ICR}},
+	dot={\gdotsubrm{z}{ICR}},
+	parent=roman]
+{zicr}
+{\gsubrm{z}{ICR}}

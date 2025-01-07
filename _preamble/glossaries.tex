@@ -1,0 +1,72 @@
+\usepackage[
+	% nomain,
+	acronym,	% main glossary for acronyms in text
+	symbols,	% main glossary for symbols in math and text
+	nogroupskip,
+	nonumberlist,
+	toc,
+	automake,
+	stylemods={mcols}]{glossaries-extra}
+
+% Extra glossary entries: 
+% they do not generate links and do not enter any "list of..."
+% Can be useful for acronyms and symbols that are seldom used in the text, or 
+% for alternative expressions of the same acronyms or symbols (for example: an 
+% acronym for text mode and a symbol in math roman for math formulas)
+\provideignoredglossary{symbols-extra}
+\provideignoredglossary{acronyms-extra}
+
+% Extra keys for unit of measurements and symbol modifiers
+\glsaddkey{unit}{}{\glsentryunit}{\Glsentryunit}{\glsunit}{\Glsunit}{\GLSunit}
+\glsaddkey{bold}{}{\glsentrybold}{\Glsentrybold}{\glsbold}{\Glsbold}{\GLSbold}
+\glsaddkey{bar}{}{\glsentrybar}{\Glsentrybar}{\glsbar}{\Glsbar}{\GLSbar}
+\glsaddkey{dot}{}{\glsentrydot}{\Glsentrydot}{\glsdot}{\Glsdot}{\GLSdot}
+\glsaddkey{ddot}{}{\glsentryddot}{\Glsentryddot}{\glsddot}{\Glsddot}{\GLSddot}
+\glssetnoexpandfield{unit}
+\glssetnoexpandfield{bold}
+\glssetnoexpandfield{bar}
+\glssetnoexpandfield{dot}
+\glssetnoexpandfield{ddot}
+
+% Extra shortcuts for (nested) subscripts and superscripts
+\input{preamble/symbols-macros.tex}
+
+% Customize acronyms and acronyms list
+\setabbreviationstyle[abbreviation]{long-short}
+\setabbreviationstyle[acronym]{long-short}
+\glssetcategoryattribute{acronym}{glossnamefont}{small}
+\glssetcategoryattribute{acronym}{glossdescfont}{small}
+
+% Add units in the list of symbols
+\newglossarystyle{mcolalttree-units}{%
+	\setglossarystyle{mcolalttree}%
+	\renewcommand{\glossentrydesc}[1]{%
+		\ifglshasfield{unit}{##1}{%
+			\glsentrydesc{##1}, \glsentryunit{##1}%
+		}%
+		{%
+			\glsentrydesc{##1}%
+		}
+	}
+}
+
+\newglossarystyle{alttree-units}{%
+	\setglossarystyle{alttree}%
+	\renewcommand{\glossentrydesc}[1]{%
+		\ifglshasfield{unit}{##1}{%
+			\glsentrydesc{##1}, \glsentryunit{##1}%
+		}%
+		{%
+			\glsentrydesc{##1}%
+		}
+	}
+}
+
+% Load entries and create lists
+\makeglossaries
+
+\loadglsentries{preamble/glossary}
+\loadglsentries{preamble/symbols}
+\loadglsentries{preamble/symbols-extra}
+\loadglsentries{preamble/acronyms}
+\loadglsentries{preamble/acronyms-extra}
