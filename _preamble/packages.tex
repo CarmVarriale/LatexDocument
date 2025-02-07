@@ -10,7 +10,8 @@
 \usepackage[italian,english]{babel}
 \usepackage[margin=1cm, vmargin=2cm]{geometry}
 \setlength\columnsep{18pt}
-\setlength{\parindent}{0pt} % Remove paragraph indentation
+\setlength{\parskip}{0.5em} % Add space between paragraphs
+\setlength{\parindent}{0pt} % Add paragraph indentation
 
 \usepackage{newtxtext}
 
@@ -185,31 +186,36 @@
 \setlength{\myfigw}{1\linewidth}
 
 \captionsetup[table]{
+	format=plain,
+	labelformat=simple,
+	labelsep=colon,
+	justification=justified,
+	singlelinecheck=false,
 	position=top,
-	font=footnotesize,
+	textfont={rm,footnotesize},
 	labelfont={bf,rm,footnotesize},
-	labelsep=space,
-	singlelinecheck=true,
-	format=hang
 }
 
 \captionsetup[figure]{
+	format=plain,
+	labelformat=simple,
+	labelsep=colon,
+	justification=justified,
+	singlelinecheck=false,
 	position=bottom,
-	font=footnotesize,
+	textfont={rm,footnotesize},
 	labelfont={bf,rm,footnotesize},
-	labelsep=space,
-	singlelinecheck=true,
-	format=hang
 }
 
 \captionsetup[subfigure]{
-	position=bottom,
-	font=footnotesize,
+	format=plain,
 	labelformat=brace,
-	labelfont={bf,rm,footnotesize},
 	labelsep=space,
-	singlelinecheck=true,
-	format=hang,
+	justification=justified,
+	singlelinecheck=false,
+	textfont={rm,footnotesize},
+	labelfont={bf,rm,footnotesize},
+	position=bottom,
 }
 
 \newcolumntype{L}{>{$}l<{$}} % left-aligned, automatic math mode
@@ -246,24 +252,30 @@
 	ragged2e}
 
 \usepackage{enumitem}
-\renewcommand{\labelitemi}{$\textcolor{my-blue}{\blacksquare}$}
-\renewcommand{\labelitemii}{$\textcolor{my-blue}{\bullet}$}
-\renewcommand{\labelitemiii}{$\textcolor{my-blue}{\diamond}$}
-\renewcommand{\labelitemiv}{$\textcolor{my-blue}{\ast}$}
+\setlist{itemsep=0pt}
+\setlist[1]{labelindent=\parindent}
+\setlist[enumerate]{label=\bfseries\textcolor{my-blue}{\arabic*.}}
+\setlist[itemize,1]{label=\textcolor{my-blue}{$\blacksquare$}}
+\setlist[itemize,2]{label=\textcolor{my-blue}{$\bullet$}}
+\setlist[itemize,3]{label=\textcolor{my-blue}{$\diamond$}}
+\setlist[itemize,4]{label=\textcolor{my-blue}{$\ast$}}
+
 
 \usepackage{titlesec}
 \titleformat*{\section}{\normalfont\Large\bfseries\color{my-blue}}
 \titleformat*{\subsection}{\normalfont\large\bfseries\color{my-blue}}
 \titleformat*{\subsubsection}{\normalfont\normalsize\bfseries\color{my-blue}}
+\titlespacing*{\section}{0pt}{1.5em}{0pt}
+\titlespacing*{\subsection}{0pt}{1em}{0pt}
 
 \usepackage{titling}
-\setlength{\droptitle}{-3em}
+\setlength{\droptitle}{-5em}
 \pretitle{\begin{flushleft}\Huge\bfseries\color{my-blue}}
-		\posttitle{\vspace{-20pt}\end{flushleft}}
+\posttitle{\vspace{-20pt}\end{flushleft}}
 \preauthor{\begin{flushleft}\Large}
-		\postauthor{\end{flushleft}}
+\postauthor{\end{flushleft}}
 \predate{\begin{flushleft}\vspace{-20pt}}
-		\postdate{\end{flushleft}}
+\postdate{\end{flushleft}}
 
 %% Cross references
 %% ---------------------------------------------------------------
