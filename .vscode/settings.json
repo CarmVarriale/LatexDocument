@@ -1,11 +1,4 @@
 {
-    "[latex]": {
-        "editor.formatOnPaste": true,
-        "editor.suggestSelection": "recentlyUsed",
-        "editor.defaultFormatter": "James-Yu.latex-workshop",
-        "editor.wordWrap": "on",
-        "editor.wordWrapColumn": 80
-    },
     "latex-workshop.latex.autoBuild.run": "never",
     "latex-workshop.latex.outDir": "%DIR%/_aux",
     "latex-workshop.latex.recipes": [
@@ -99,24 +92,21 @@
         },
         {
             "args": [
-                "-d.aux",
-                "%DOCFILE%"
+                "%OUTDIR%/%DOCFILE%"
             ],
             "command": "bibtex",
             "name": "bibtex"
         },
         {
             "args": [
-                "-d.aux",
-                "%DOCFILE%"
+                "%OUTDIR%/%DOCFILE%"
             ],
             "command": "biber",
             "name": "biber"
         },
         {
             "args": [
-                "-d.aux",
-                "%DOCFILE%"
+                "%OUTDIR%/%DOCFILE%"
             ],
             "command": "makeglossaries",
             "name": "makeglossaries"
